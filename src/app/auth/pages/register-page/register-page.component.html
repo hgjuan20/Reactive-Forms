@@ -12,18 +12,15 @@
                 <div class="col-sm-9">
                     <input type="text"
                            class="form-control"
-                           placeholder="Nombre del usuario"
+                           placeholder="Nombre y Apellido"
                            formControlName="name"
                            >
                     @if (formUltis.isValidField(myForm, 'name')) {
                       <span class="form-text text-danger">
-                        {{ formUltis.getFieldError(myForm, 'name')}}
+                        Debe colocar nombre y apellido
+                        <!-- {{ formUltis.getFieldError(myForm, 'name')}} -->
                       </span>
                     }
-
-                    <!-- <span class="form-text text-danger">
-                          Debe de ser en formato de nombre y apellido
-                      </span> -->
                 </div>
             </div>
 
@@ -38,6 +35,7 @@
                            >
                     @if (formUltis.isValidField(myForm, 'email')) {
                       <span class="form-text text-danger">
+                        <!-- El valor ingresdo no parece un correo electrónico -->
                           {{ formUltis.getFieldError(myForm, 'email')}}
                       </span>
                     }
@@ -110,6 +108,13 @@
 
             <div class="row">
                 <div class="col">
+
+                    @if ( myForm.errors && myForm.touched) {
+                      <span class="text-danger">
+                        Las contraseñas nos son iguales
+                      </span>
+                    }
+
                     <button class="btn btn-primary float-end"
                             type="submit">
                         Crear
